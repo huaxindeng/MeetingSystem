@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <script src="../js/qrcode.js"></script>
+        <div class="qrCode">
+            <div class="configure">
+                <div class="inputUrl">
+                    <span style="display:block;height:40px;line-height:40px;float:left;">输入地址：</span>
+                    <input type="text" id="text" value="http://www.baidu.com" />
+                </div>
+                <div class="inputUrl">
+                    <span style="display:block;height:40px;line-height:40px;float:left;">图片大小：</span>
+                    <select class="qrSize">
+                        <option value="100">100 X 100</option>
+                        <option value="150">150 X 150</option>
+                        <option value="200">200 X 200</option>
+                        <option value="300">300 X 300</option>
+                    </select>
+                </div>
+                <div class="inputUrl">
+                    <span style="display:block;height:40px;line-height:40px;float:left;">背景颜色：</span>
+                    <input type="text" readonly value="#ffffff" id="qrBGC" />
+                    <div id="test2" style="height:40px;line-height:40px;width:40px;"></div>
+                </div>
+                <div class="inputUrl">
+                    <span style="display:block;height:40px;line-height:40px;float:left;">前景颜色：</span>
+                    <input type="text" readonly value="#000000" id="qrFGC" />
+                    <div id="test3" style="height:40px;line-height:40px;width:40px;"></div>
+                </div>
+                <div class="inputUrl">
+                    <a class="layui-btn createQRBtn">生成二维码</a>
+                </div>
+                <div class="inputUrl">
+                    <a class="layui-btn downloadQRBtn">下载图片</a>
+                </div>
+            </div>
+            <div id="qrcode">这里将生成二维码图片！</div>
+            <div style="clear:both;"></div>
+        </div>
+        <style type="text/css">
+            .qrCode {
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                box-shadow: blue 0px 0px 10px 0px;
+                padding: 30px;
+                border-radius: 8px;
+                /*white;*/
+            }
+
+            .configure {
+                max-width: 400px;
+                width: auto;
+                height: auto;
+                min-height: 300px;
+                float: left;
+                display: inline-block;
+            }
+
+            .inputUrl {
+                float: left;
+                height: 40px;
+                margin-bottom: 15px;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .inputUrl a {
+                text-decoration: none;
+            }
+
+            #text {
+                height: 40px;
+                line-height: 30px;
+                border-radius: 3px;
+                padding: 3px;
+                width: auto;
+                right: 10px;
+                max-width: 400px;
+                min-width: 200px;
+                resize: none;
+                padding-left: 10px;
+                border: 1px solid black;
+            }
+
+            #text:hover {
+                border: 1px solid blue;
+                box-shadow: red 0px 0px 10px 0px;
+            }
+
+            .qrSize {
+                height: 40px;
+                line-height: 30px;
+                border-radius: 3px;
+                padding-left: 10px;
+                padding: 3px;
+                max-width: 280px;
+                width: auto;
+                border:1px solid #aaa7a7;
+            }
+
+            #qrcode {
+                width: auto;
+                height: auto;
+                float: left;
+                padding: 10px;
+                border: 1px solid #00ff90;
+                border-radius: 5px;
+                display: inline-block;
+                margin-left: 10px;
+                min-height:50px;
+                min-width:50px;
+            }
+
+            #test2 div {
+                width: 40px;
+                height: 40px;
+            }
+            #test3 div {
+                width: 40px;
+                height: 40px;
+            }
+
+            #qrBGC {
+                display: inline-block;
+                width: 130px;
+                height: 36px;
+                line-height: 40px;
+                border-radius: 3px;
+                border: 1px solid #808080;
+                padding-left: 10px;
+            }
+            #qrFGC {
+                display: inline-block;
+                width: 130px;
+                height: 36px;
+                line-height: 40px;
+                border-radius: 3px;
+                border: 1px solid #808080;
+                padding-left: 10px;
+            }
+
+            .createQRBtn {
+                /*max-width: 350px;*/
+                width: 60%;
+                margin-left: 20%;
+                height: 40px;
+                line-height: 40px;
+                text-decoration: none;
+            }
+
+            .downloadQRBtn {
+                width: 60%;
+                margin-left: 20%;
+                height: 40px;
+                line-height: 40px;
+                text-decoration: none;
+            }
+        </style>
+        <script type="text/javascript">
+            //初始化二维码
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 200,
+                height: 200
+            });
+            //生成二维码
+            function makeCode() {
+                var elText = document.getElementById("text");
+                if (!elText.value) {
+                    alert("请输入要生成二维码的连接！");
+                    elText.focus();
+                    return;
+                }
+                $("#qrcode").empty();
+                qrcode = new QRCode(document.getElementById("qrcode"), {
+                    width: $(".qrSize").val(),
+                    height: $(".qrSize").val(),
+                    colorLight: $("#qrBGC").val(),
+                    colorDark: $("#qrFGC").val()
+                });
+                qrcode.makeCode(elText.value);
+            }
+
+            //下载二维码
+            function downloadIamge() {
+                var imgs = document.getElementById("qrcode").getElementsByTagName("img")
+                var a = document.createElement('a')
+                a.download = 'xds' + new Date().getTime() || '下载图片名称'
+                a.href = imgs[0].src
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            $(document).ready(function () {
+                makeCode();
+
+                $("#text").on("keydown", function (e) {
+                    if (e.keyCode == 13) {
+                        makeCode();
+                    }
+                });
+                //点击生成二维码
+                $(".createQRBtn").click(function () {
+                    makeCode();
+                });
+                //点击下载二维码
+                $(".downloadQRBtn").click(function () {
+                    if ($("#qrcode:has(img)").length == 0) {
+                        alert("请先生成二维码再点击下载！");
+                    }
+                    else {
+                        downloadIamge();
+                    }
+                });
+
+                $(".inputUrl").each(function () {
+                    $(this).children("input").css({ "width": ($(this).width() - 120) + "px" });
+                    $(this).children("select").css({ "width": ($(this).width() - 120) + "px" });
+                });
+
+                var windowsWidth = $(window).width();
+                if (windowsWidth > 168) {
+                    $(".qrSize").append('<option value="400">400 X 400</option>');
+                    $(".qrSize").append('<option value="500">500 X 500</option>');
+                }
+            });
+        </script>
+        <script src="~/Content/layui/lay/modules/form.js"></script>
+        <script type="text/javascript">
+            layui.use('colorpicker', function () {
+                var colorpicker = layui.colorpicker;
+                //初始色值
+                colorpicker.render({
+                    elem: '#test2'
+                    , color: '#ffffff' //设置默认色
+                    , done: function (color) {
+                        $("#qrBGC").val(color);
+                    }
+                });
+                colorpicker.render({
+                    elem: '#test3'
+                    , color: '#000000' //设置默认色
+                    , done: function (color) {
+                        $("#qrFGC").val(color);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

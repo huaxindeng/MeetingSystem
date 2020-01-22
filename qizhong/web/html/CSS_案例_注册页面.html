@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>注册页面</title>
+        <style>
+            <!--选择所有元素-->
+            *{
+                margin: 0px;
+                padding: 0px;
+                /*固定大小*/
+                box-sizing: border-box;
+            }
+            body{
+                /*设置body背景图片*/
+                background-image: url("../imgs/b2.jpg");
+            }
+            /*最大盒子*/
+            .rg_layout{
+                width: 800px;
+                height: 500px;
+                border: 5px solid #8b8e99;
+                background-color: white;
+                /*水平居中*/
+                margin: auto;
+                /*上边距*/
+                margin-top: 100px;
+            }
+            /*最左边盒子*/
+            .rg_left{
+                float: left;
+                /*设置外边距*/
+                margin: 15px;
+            }
+            /*新用户注册*/
+            .rg_left p:first-child{
+                color: #ff9e65;
+                font-size: 15px;
+                margin-right: 100px;
+            }
+            /*USER REGISTER*/
+            .rg_left p:last-child{
+                color: #a4baff;
+                font-size: 15px;
+            }
+            /*中间盒子*/
+            .rg_center{
+                float: left;
+                margin-right: 100px;
+                width: 300px;
+            }
+            /*中间盒子的label*/
+            .td_left{
+                width: 100px;
+                /*文本右对齐*/
+                text-align: right;
+                height: 30px;
+            }
+            /*中间盒子的input*/
+            .td_right{
+                /*为何是设置内边距:设置td与input的距离，故为内边距*/
+                padding: 15px;
+
+            }
+            /*最右边盒子*/
+            .rg_right{
+                float: right;
+                margin: 15px;
+
+            }
+            /*立即登录*/
+            .rg_right p a{
+                color: cyan;
+
+            }
+            /*input*/
+            .rg_input{
+                width: 180px;
+                height: 20px;
+                border: 1px solid #a6a6a6;
+                /*设置边框圆角*/
+                border-radius: 5px;
+                /*设置placeholder与边框的距离*/
+                padding-left: 5px;
+            }
+            /*验证码*/
+            .rg_input_verification{
+                width: 90px;
+                height: 25px;
+                border: 1px solid #a6a6a6;
+                /*设置边框圆角*/
+                border-radius: 5px;
+                padding-left: 5px;
+            }
+            /*图片*/
+            #img{
+                /*垂直居中*/
+                vertical-align: middle;
+            }
+            /*注册*/
+            .input_submit{
+                background-color: #ffd026;
+                width: 50px;
+                height: 20px;
+                font-size: 15px;
+                /*设置边框圆角*/
+                border-radius: 5px;
+            }
+
+        </style>
+
+
+    </head>
+    <body >
+        <div class="rg_layout">
+            <div class="rg_left">
+                <p>新用户注册</p><br>
+                <p>UESR REGISTER</p>
+            </div>
+            <div class="rg_center">
+                <form method="get">
+                    <table width="300">
+                        <tr>
+                            <td class="td_left" ><label for="username">用户名</label></td>
+                            <td  class="td_right" > <input class="rg_input" type="text" placeholder="请输入用户名" id="username" name="username"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" > <label for="password">密码</label></td>
+                            <td class="td_right" > <input class="rg_input" type="password" placeholder="请输入密码" name="password" id="password"></input></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" > <label for="email">Email</label></td>
+                            <td class="td_right" > <input class="rg_input"type="email" placeholder="请输入Email" name="email" id="email"></input></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" > <label dor="name">姓名</label></td>
+                            <td class="td_right" > <input class="rg_input"type="text" placeholder="请输入姓名" name="name" id="name"></input></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" > <label for="phone">手机号</label></td>
+                            <td class="td_right" > <input class="rg_input"type="tel" placeholder="请输入手机号" name="phnoe" id="phone"></input></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" >性别</td>
+                            <td class="td_right" ><input type="radio"name="sex" value="man" checked>男
+                                <input type="radio" name="sex" value="woman">女</td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" > <label for="birthday">出生日期</label></td>
+                            <td class="td_right" ><input class="rg_input"type="date" name="birthday" id="birthday"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left" ><label for="verification">验证码</label></td>
+                            <td class="td_right" ><input class="rg_input_verification"type="text" name="verification" id="verification" placeholder="请输入验证码">
+                               <img id="img"src="img/verify_code.png" width="80" height="40"></td>
+                        </tr>
+                        <tr>
+                            <td  colspan="2" align="center"> <input class="input_submit"type="submit" value="注册"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="rg_right">
+            <p>已有账号？<a href="#">立即登录</a></p>
+        </div>
+        </div>
+    </body>
+</html>

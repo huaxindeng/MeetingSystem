@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <filter><!-- 过滤器配置-->
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ncu.stu.filter.EncodingFilter</filter-class><!--全路径 从根包开始一直到类名-->
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern> <!--*即为过滤所有-->
+    </filter-mapping>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>ncu.stu.servlet.loginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list><!--默认首页地址-->
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <!--异常处理-->
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.Exception</exception-type>-->
+        <!--<location>/error.jsp</location>-->
+    <!--</error-page>-->
+</web-app>

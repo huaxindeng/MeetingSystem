@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:jsp="http://java.sun.com/JSP/Page">
+    <head>
+        <meta charset="UTF-8">
+        <title>角色选择页面</title>
+        <style>
+            body{
+                /*background-image: url("../imgs/huiyi1.jpg");*/
+            }
+            center{
+                 margin-top: 100px;
+                 font-size: 30px;
+             }
+            td{
+                width: 200px;
+                height: 200px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <jsp:useBean class="ncu.stu.util.JdbcUtils">
+        <center>
+                <table>
+                    <caption>角色选择</caption>
+                    <tr>
+                        <td bgcolor="#00ffff" ><a href="../login.jsp">会议发起人</a></td>
+                        <td bgcolor="red"><a href="#">参会者</a></td>
+                        <td bgcolor="#ff8c00"><a href="#">系统管理员</a></td>
+                    </tr>
+                </table>
+        </center>
+
+    </body>
+</html>

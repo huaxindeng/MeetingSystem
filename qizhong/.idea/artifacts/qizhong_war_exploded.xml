@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="qizhong:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/qizhong_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="qizhong/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="qizhong" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="libs (4)" />
+          <element id="library" level="module" name="JUnit4" module-name="qizhong" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
